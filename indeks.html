@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Girlfriend National Day 💘</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow-x: hidden;
+      color: white;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.ibb.co/5K70hJX/stars.gif') repeat;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 30px;
+      text-shadow: 2px 2px 8px #ff69b4;
+      animation: zoomIn 1.5s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    #typing {
+      font-size: 1.3em;
+      margin: 20px auto;
+      max-width: 600px;
+      min-height: 60px;
+      color: #fffbea;
+      text-shadow: 1px 1px 5px #ff4081;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      margin: auto;
+      max-width: 1000px;
+    }
+
+    .gallery img,
+    .gallery video {
+      width: 100%;
+      border-radius: 15px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+    }
+
+    .gallery img:hover,
+    .gallery video:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    }
+
+    .button {
+      background: white;
+      color: #ff69b4;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      background: #ff69b4;
+      color: white;
+      box-shadow: 0 0 20px #ff69b4;
+    }
+
+    audio {
+      display: none;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <h1>💖 Happy Girlfriend National Day 💖</h1>
+  <div id="typing"></div>
+
+  <button class="button" onclick="startCelebration()">Mulai Perayaan 🎉</button>
+
+  <audio id="bg-music" src="lagu1.mp3" loop></audio>
+
+  <h2 style="margin-top: 50px;">📸 Galeri Kenangan Kita</h2>
+  <div class="gallery">
+    <img src="foto1.jpg" alt="Love Photo 1"/>
+    <video controls src="video1.mp4"></video>
+    <img src="foto2.jpg" alt="Love Photo 2"/>
+    <video controls src="video2.mp4"></video>
+  </div>
+
+  <footer>💌 Dibuat dengan cinta oleh Pande ✨</footer>
+
+  <script>
+    const typingText = "Hari ini hari spesial... karena kamu adalah bagian paling indah dalam hidupku, alay dikit yang penting happy 💘";
+    let i = 0;
+    const typingSpeed = 50;
+
+    function typeWriter() {
+      if (i < typingText.length) {
+        document.getElementById("typing").innerHTML += typingText.charAt(i);
+        i++;
+        setTimeout(typeWriter, typingSpeed);
+      }
+    }
+
+    typeWriter();
+
+    function startCelebration() {
+      const music = document.getElementById("bg-music");
+      music.play();
+
+      confetti();
+
+      alert("Selamat merayakan! 🎊");
+    }
+
+    // Simple confetti animation using emojis
+    function confetti() {
+      for (let i = 0; i < 30; i++) {
+        let confetto = document.createElement("div");
+        confetto.innerHTML = ["🎉","✨","💖","💕","💫"][Math.floor(Math.random()*5)];
+        confetto.style.position = "fixed";
+        confetto.style.left = Math.random() * 100 + "vw";
+        confetto.style.top = "-5vh";
+        confetto.style.fontSize = "2em";
+        confetto.style.animation = `drop ${Math.random() * 3 + 2}s ease forwards`;
+        document.body.appendChild(confetto);
+        setTimeout(() => confetto.remove(), 5000);
+      }
+    }
+
+    // Drop animation keyframe (injecting via JS)
+    const styleSheet = document.createElement("style");
+    styleSheet.innerHTML = `
+      @keyframes drop {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(styleSheet);
+  </script>
+</body>
+</html>
